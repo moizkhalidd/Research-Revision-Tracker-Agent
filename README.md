@@ -93,7 +93,7 @@ python main.py evaluate --engine offline
 python main.py history --comment R2.2
 
 # 5 Correct or withdraw comments (old records stay as superseded history)
-python main.py correct-comment --comment R3.1 --interpretation "Justifying the 64-reading window is enough" --checks-file sample_data\comment_r31_corrected_checks.json --reason "reviewer clarified" --reevaluate --engine offline
+python main.py correct-comment --comment R3.1 --text "Please justify the choice of the 64-reading window." --interpretation "Justifying the 64-reading window is enough" --checks-file sample_data\comment_r31_corrected_checks.json --reason "reviewer clarified" --reevaluate --engine offline
 python main.py withdraw --comment R3.2 --reason "withdrawn by the reviewer"
 python main.py superseded
 python main.py correct-verdict --comment R1.1 --verdict Partial --note "Table 2 still lacks variance"
