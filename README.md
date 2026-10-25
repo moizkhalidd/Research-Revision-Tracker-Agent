@@ -96,8 +96,8 @@ python main.py history --comment R2.2
 python main.py correct-comment --comment R3.1 --text "Please justify the choice of the 64-reading window." --interpretation "Justifying the 64-reading window is enough" --checks-file sample_data\comment_r31_corrected_checks.json --reason "reviewer clarified" --reevaluate --engine offline
 python main.py withdraw --comment R3.2 --reason "withdrawn by the reviewer"
 python main.py superseded
-python main.py correct-verdict --comment R1.1 --verdict Partial --note "Table 2 still lacks variance"
-python main.py clarify --comment R1.1 --text "Table 2 is on page 6"
+python main.py correct-verdict --comment R1.1 --verdict Addressed --note "Both baselines are named in Setup and their F1 scores are given in Results"
+python main.py clarify --comment R1.1 --text "The first F1 value (0.84) is One-Class SVM and the second (0.79) is the LSTM autoencoder"
 
 # 6 Excel and the UNSENT draft
 python main.py export                   # exports\EDGE-DEMO_revision_matrix.xlsx
