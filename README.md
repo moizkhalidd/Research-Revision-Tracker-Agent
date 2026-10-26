@@ -17,8 +17,7 @@ Python 3.10 or newer. Dependencies are pinned in `requirements.txt`. Developed a
 | PDF reading | Tested with a small generated text PDF. Heading detection is heuristic; scanned PDFs are rejected (no OCR) |
 | LaTeX reading | Regex based. Page numbers do not exist in LaTeX, so references say "page n/a" instead of inventing one |
 
-Groq model: the default is `openai/gpt-oss-120b`. Groq's deprecation page lists `llama-3.3-70b-versatile` with a shutdown
-date of 2026-08-16 and recommends `openai/gpt-oss-120b`. Model lists change, so run `python main.py llm-check` once with your key.
+Groq model: the default is `openai/gpt-oss-120b`. Run `python main.py llm-check` once with your key.
 Set `GROQ_MODEL` in `.env` to change it. The recorded Groq evaluation and memory comparison runs used `openai/gpt-oss-20b`.
 
 ## Architecture in one page
