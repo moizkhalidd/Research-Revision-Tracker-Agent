@@ -1,4 +1,4 @@
-# Research Document Revision Tracker (project A16)
+# Research Document Revision Tracker
 
 A command-line agent that tracks how an author revises a research paper in response to numbered reviewer comments.
 It remembers the baseline paper, comments, every later version, the author's resolution claims, the evidence it found,
@@ -13,13 +13,13 @@ Python 3.10 or newer. Dependencies are pinned in `requirements.txt`. Developed a
 |---|---|
 | Everything except LLM judgment (ingestion, diff, memory, corrections, isolation, retries, Excel, drafts, evaluation runner) | Executed offline; `python -m unittest discover -s tests -t .` runs 26 tests and the 14-scenario evaluation passes with the offline engine |
 | `--engine offline` | A deterministic keyword rubric, NOT an LLM. It needs the author-confirmed "checks" in the comment file. Every verdict it creates is labelled `offline-deterministic` |
-| `--engine groq` | The real LLM path. **It has not been run live by the author of this code** (no API key was available). It is covered only by tests with a stand-in engine. Expect to fix small issues on first contact and report them |
+| `--engine groq` | The real LLM path. It has been run live: `eval run --engine groq` passed 14/14 scenarios and `eval compare --engine groq` was run with the real model (reports in `exports/`). Verdicts can vary between runs |
 | PDF reading | Tested with a small generated text PDF. Heading detection is heuristic; scanned PDFs are rejected (no OCR) |
 | LaTeX reading | Regex based. Page numbers do not exist in LaTeX, so references say "page n/a" instead of inventing one |
 
 Groq model: the default is `openai/gpt-oss-120b`. Groq's deprecation page lists `llama-3.3-70b-versatile` with a shutdown
 date of 2026-08-16 and recommends `openai/gpt-oss-120b`. Model lists change, so run `python main.py llm-check` once with your key.
-Set `GROQ_MODEL` in `.env` to change it (for example `openai/gpt-oss-20b`).
+Set `GROQ_MODEL` in `.env` to change it. The recorded Groq evaluation and memory comparison runs used `openai/gpt-oss-20b`.
 
 ## Architecture in one page
 
@@ -121,7 +121,7 @@ python main.py status                   # only B's two comments appear
 ```powershell
 python -m unittest discover -s tests -t .           # offline unit tests (26)
 python main.py eval run --engine offline            # 14 scenarios, no key needed
-python main.py eval run --engine groq               # same 14 scenarios with the real LLM (needs key; some can fail honestly)
+python main.py eval run --engine groq               # same 14 scenarios with the real LLM (needs key; passed 14/14 in the recorded run)
 python main.py eval compare --engine offline        # memory enabled vs disabled, 3 cases
 python main.py eval compare --engine groq           # API-dependent version
 python main.py eval metrics                         # pass rate, duplicate side effects, LLM calls, latency
@@ -135,7 +135,7 @@ duplicates, invalid input and missing API key, Excel consistency and the UNSENT 
 Needs a Groq key: `evaluate --engine groq`, `correct-comment --reevaluate --engine groq`, `eval run --engine groq`, `eval compare --engine groq`, `llm-check`.
 Offline: everything else.
 
-## Known limits (state these in your viva and report)
+## Known limits
 
 - The offline engine cannot judge meaning. It matches author-confirmed keywords. Do not present its results as LLM evaluation.
 - With the Groq engine, verdicts vary between runs. Guards limit the damage (fabricated quotes are dropped, unsupported "Addressed" is downgraded,
@@ -144,4 +144,3 @@ Offline: everything else.
 - Prompt-injection resistance is structural (untrusted text is delimited, flagged passages are never evidence, the model cannot write approvals, IDs or permissions).
   It is tested with a stand-in engine that obeys the attack; behaviour of a real model against new attacks is not guaranteed.
 - No email integration exists. Drafts are files labelled UNSENT.
-- The assignment mentions a project catalogue workbook that was not attached; project A16 was built from your description.
