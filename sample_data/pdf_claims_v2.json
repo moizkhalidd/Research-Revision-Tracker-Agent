@@ -1,0 +1,14 @@
+{
+  "P1.1": {
+    "claim": "resolved",
+    "note": "Baselines are now named in Section 3.1 and their MAPE is given in Section 3.2."
+  },
+  "P1.2": {
+    "claim": "resolved",
+    "note": "Added repeated runs."
+  },
+  "P2.1": {
+    "claim": "partial",
+    "note": "Dataset size added; time period still to do."
+  }
+}

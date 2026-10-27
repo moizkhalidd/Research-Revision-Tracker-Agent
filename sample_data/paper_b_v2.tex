@@ -1,0 +1,22 @@
+\documentclass{article}
+\title{Federated Scheduling of Appointment Reminders with Privacy Guarantees}
+\author{Synthetic Authors (demo data)}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Clinics want to schedule appointment reminders without sharing patient histories. We train a scheduler with federated learning so that raw records never leave the clinic.
+\end{abstract}
+
+\section{Introduction}
+Missed appointments waste clinic capacity. A reminder policy that adapts to each patient needs data that clinics are reluctant to share.
+
+\section{Method}
+Each clinic trains a local model of patient response and shares only model updates. Updates are clipped and noised before they leave the clinic.
+
+\section{Experiments}
+We simulate twelve clinics with synthetic patient histories. Updates are protected with differential privacy at epsilon 2.0. The federated scheduler is compared with a fixed reminder schedule.
+
+\section{Conclusion}
+Federated scheduling keeps records local while improving reminder timing.
+\end{document}

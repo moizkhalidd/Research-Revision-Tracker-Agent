@@ -1,0 +1,48 @@
+\documentclass{article}
+\title{Lightweight Anomaly Detection for Edge Pump-Station Sensor Streams}
+\author{Synthetic Authors (demo data)}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Pump stations produce continuous sensor streams that must be screened for faults close to the equipment. We present a lightweight detector based on an isolation forest that runs on low-power edge hardware. The detector reaches an F1 of 0.91 on our pump-station data while using little memory.
+\end{abstract}
+
+\section{Introduction}
+Water utilities operate hundreds of pump stations and need early warning of bearing wear, blockages and sensor faults. Sending every reading to a central server is costly, so detection should happen on the edge.
+
+\section{Related Work}
+Classical statistical process control flags readings that leave fixed control limits \cite{shewhart}. Learning-based detectors such as isolation forests \cite{liu2008} isolate anomalies with random partitions and need no labels.
+
+\section{Method}
+The detector scores a sliding window of recent readings with an isolation forest. A reading is reported as anomalous when its score exceeds a threshold that is tuned on a validation split. The model is small enough to run on a microcontroller-class device. We use a window of 64 readings because shorter windows missed slow drifts and longer windows delayed alerts.
+
+\section{Experiments}
+\subsection{Setup}
+We evaluate the detector on sensor data from pump stations. We compare against One-Class SVM and an LSTM autoencoder.
+
+The dataset contains 120000 readings collected from 14 pumps.
+
+Each pump logs one reading every 10 seconds, which gives a sampling rate of 0.1 Hz.
+
+Over 10 independent runs the mean F1 is 0.91 with a standard deviation of 0.01.
+
+\subsection{Results}
+Baseline F1 on the test split is 0.84 for One-Class SVM and 0.79 for the LSTM autoencoder.
+
+Our detector reaches an F1 of 0.91 on the test split. Precision and recall are balanced, and the detector raised few false alarms during normal operation.
+
+\subsection{Window size sensitivity}
+We repeated the experiment with window sizes of 16, 32, 64, 128 and 256 readings. The F1 is 0.83, 0.88, 0.91, 0.90 and 0.87 respectively, so the results are stable for window sizes between 32 and 128 readings and 64 gives the best F1. This sensitivity analysis supports our choice of window size.
+
+\section{Limitations}
+A limitation of this study is that all pumps belong to one utility, which threatens external validity. The data also covers a single year, which threatens the validity of conclusions about seasonal drift.
+
+\section{Conclusion}
+We presented a lightweight isolation forest detector for edge pump-station monitoring and showed that it detects faults accurately on our data.
+
+\begin{thebibliography}{9}
+\bibitem{shewhart} W. Shewhart. Economic control of quality of manufactured product. 1931.
+\bibitem{liu2008} F. Liu, K. Ting, Z. Zhou. Isolation forest. ICDM 2008.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,20 @@
+{
+  "R1.1": {
+    "claim": "resolved",
+    "note": "Baselines are now named in Section 5.1."
+  },
+  "R1.2": {
+    "claim": "resolved",
+    "note": "Added a statement about stability across seeds."
+  },
+  "R2.1": {
+    "claim": "partial",
+    "note": "Dataset size added; sampling rate still to do."
+  },
+  "R2.2": {
+    "claim": "resolved",
+    "note": "New Limitations section."
+  },
+  "R3.1": "outstanding",
+  "R3.2": "outstanding"
+}

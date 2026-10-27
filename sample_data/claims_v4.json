@@ -1,0 +1,26 @@
+{
+  "R1.1": {
+    "claim": "resolved",
+    "note": "Each F1 value is now tied to its baseline by name."
+  },
+  "R1.2": {
+    "claim": "resolved",
+    "note": "Mean and standard deviation over 10 runs, unchanged from the last revision."
+  },
+  "R2.1": {
+    "claim": "resolved",
+    "note": "Dataset size and sampling rate are both given."
+  },
+  "R2.2": {
+    "claim": "resolved",
+    "note": "Limitations section restored with threats to validity."
+  },
+  "R3.1": {
+    "claim": "resolved",
+    "note": "Added a window size sensitivity analysis."
+  },
+  "R3.2": {
+    "claim": "resolved",
+    "note": "Energy is now covered."
+  }
+}

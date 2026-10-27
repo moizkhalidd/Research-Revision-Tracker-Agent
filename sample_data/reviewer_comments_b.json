@@ -1,0 +1,33 @@
+{
+  "synthetic": true,
+  "comments": [
+    {
+      "id": "R1.1",
+      "reviewer": "Reviewer 1",
+      "text": "Please state the privacy budget (epsilon) used in the experiments.",
+      "checks": [
+        {
+          "label": "privacy budget stated",
+          "any": [
+            "epsilon"
+          ],
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "id": "R1.2",
+      "reviewer": "Reviewer 1",
+      "text": "Please compare the federated scheduler with a centralised scheduler.",
+      "checks": [
+        {
+          "label": "centralised comparison",
+          "any": [
+            "centralised scheduler"
+          ],
+          "numeric": true
+        }
+      ]
+    }
+  ]
+}

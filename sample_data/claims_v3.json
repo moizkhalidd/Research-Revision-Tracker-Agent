@@ -1,0 +1,19 @@
+{
+  "R1.1": {
+    "claim": "resolved",
+    "note": "Baseline F1 values added."
+  },
+  "R1.2": {
+    "claim": "resolved",
+    "note": "Mean and standard deviation over 10 runs."
+  },
+  "R2.1": {
+    "claim": "resolved",
+    "note": "Sampling rate added."
+  },
+  "R3.1": {
+    "claim": "resolved",
+    "note": "Window size is now justified."
+  },
+  "R3.2": "outstanding"
+}

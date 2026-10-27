@@ -1,0 +1,9 @@
+[
+  {
+    "label": "choice of the 64-reading window is justified",
+    "any": [
+      "64 readings"
+    ],
+    "numeric": true
+  }
+]
