@@ -134,7 +134,7 @@ duplicates, invalid input and missing API key, Excel consistency and the UNSENT 
 Needs a Groq key: `evaluate --engine groq`, `correct-comment --reevaluate --engine groq`, `eval run --engine groq`, `eval compare --engine groq`, `llm-check`.
 Offline: everything else.
 
-## Known limits
+## Known limits (state these in your viva and report)
 
 - The offline engine cannot judge meaning. It matches author-confirmed keywords. Do not present its results as LLM evaluation.
 - With the Groq engine, verdicts vary between runs. Guards limit the damage (fabricated quotes are dropped, unsupported "Addressed" is downgraded,
